@@ -1,0 +1,49 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: parcial_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: parcialdb
+      POSTGRES_USER: parcial_user
+      POSTGRES_PASSWORD: parcial_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U parcial_user -d parcialdb"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - backend_net
+
+  mysql:
+    image: mysql:8.4
+    container_name: parcial_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: parcialdb
+      MYSQL_USER: parcial_user
+      MYSQL_PASSWORD: parcial_pass
+      MYSQL_ROOT_PASSWORD: root_pass
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot_pass"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - backend_net
+
+volumes:
+  postgres_data:
+  mysql_data:
+
+networks:
+  backend_net:
+    driver: bridge
