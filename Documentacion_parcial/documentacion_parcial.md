@@ -21,3 +21,6 @@ El proyecto incluira:
 - verificacion en DBeaver
 
 Las imagenes de evidencias se guardaran en `Documentacion_parcial/imagenes`, separadas por subcarpetas segun el tema documentado, por ejemplo `docker`, `dbeaver` o `http`.
+
+Evidencia inicial de Docker:
+![Docker Compose](./imagenes/docker/docker-compose.png)
