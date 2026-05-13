@@ -59,8 +59,8 @@ Tambien se creo una configuracion central para la base de datos, permitiendo cam
 - `DB_NAME`
 - `DB_SYNCHRONIZE`
 
-En la siguiente evidencia se muestra el archivo `.env.example`, encargado de definir de forma configurable el tipo de base de datos, el host, el puerto, el usuario, la contrasena y el nombre de la base de datos que utilizara el backend.
-![Archivo env example](./imagenes/orm/orm-env-example.png)
+En la siguiente evidencia se muestra el archivo `.env`, encargado de definir de forma configurable el tipo de base de datos, el host, el puerto, el usuario, la contrasena y el nombre de la base de datos que utilizara el backend.
+![Archivo env](./imagenes/orm/orm-env-example.png)
 
 En la siguiente imagen se observa el archivo `src/config/database.config.ts`, encargado de centralizar la logica de conexion y de interpretar las variables del `.env` para decidir si el backend trabajara con `PostgreSQL` o con `MySQL`.
 ![Database config](./imagenes/orm/orm-database-config.png)
@@ -104,4 +104,34 @@ Controlador de `seed`:
 Configuracion del modulo `seed`:
 ![Seed module](./imagenes/punto4/seed/seed-module-config.png)
 
+Logica de `seed.service.ts`:
+![Seed faker logic](./imagenes/punto4/seed/seed-faker-logic.png)
+
 Con esto, el proyecto ya cuenta con modelos, validaciones y la base funcional para el CRUD y la generacion de datos de prueba.
+
+
+5: En este punto se verifico la creacion fisica de las tablas y la carga de datos en `PostgreSQL` usando DBeaver.
+
+Primero se levantaron los contenedores con la configuracion de `PostgreSQL`.
+![Docker compose PostgreSQL](./imagenes/punto5/dbeaver/docker-compose-up-postgres.png)
+
+Despues se verifico que el ORM hubiera creado correctamente las tablas `cars` y `tuitions`.
+![Tablas creadas en PostgreSQL](./imagenes/punto5/dbeaver/postgres-tables-created.png)
+
+Antes de ejecutar el seed, se pudo observar la tabla `cars` creada pero sin registros cargados.
+![Tabla cars sin seed](./imagenes/punto5/dbeaver/postgres-cars-empty.png)
+
+Luego de ejecutar el seed, se cargaron `20 registros` en la tabla `cars`.
+![Tabla cars con seed](./imagenes/punto5/dbeaver/postgres-cars-seeded.png)
+
+De la misma forma, tambien se cargaron `20 registros` en la tabla `tuitions`.
+![Tabla tuitions con seed](./imagenes/punto5/dbeaver/postgres-tuitions-seeded.png)
+
+
+6: Finalmente, se dejo preparado un archivo de pruebas HTTP con las peticiones CRUD necesarias para probar el backend.
+
+Estructura de la carpeta `http`:
+![Carpeta http](./imagenes/punto6/http/http-folder-structure.png)
+
+Archivo `crud-tests.http`:
+![Archivo crud tests](./imagenes/punto6/http/http-crud-tests-file.png)
