@@ -135,3 +135,6 @@ Estructura de la carpeta `http`:
 
 Archivo `crud-tests.http`:
 ![Archivo crud tests](./imagenes/punto6/http/http-crud-tests-file.png)
+
+Como evidencia adicional, tambien se muestra una prueba exitosa del endpoint `GET /cars`, donde se observa la respuesta del backend con los datos retornados correctamente.
+![Respuesta GET cars](./imagenes/punto6/http/http-get-cars-response.png)
