@@ -1,0 +1,62 @@
+### Seed database with 20 cars and 20 tuitions
+POST http://localhost:3000/seed
+Content-Type: application/json
+
+###
+POST http://localhost:3000/cars
+Content-Type: application/json
+
+{
+  "brand": "Toyota",
+  "vehicleClass": "Sedan",
+  "model": "Corolla",
+  "engineCapacity": 1800,
+  "passengerCapacity": 5
+}
+
+###
+GET http://localhost:3000/cars
+
+###
+GET http://localhost:3000/cars/1
+
+###
+PATCH http://localhost:3000/cars/1
+Content-Type: application/json
+
+{
+  "brand": "Mazda",
+  "engineCapacity": 2000
+}
+
+###
+DELETE http://localhost:3000/cars/1
+
+###
+POST http://localhost:3000/tuitions
+Content-Type: application/json
+
+{
+  "dateMatricula": "2026-05-13",
+  "city": "Bogota",
+  "paymentAmount": 320.50,
+  "carId": 1
+}
+
+###
+GET http://localhost:3000/tuitions
+
+###
+GET http://localhost:3000/tuitions/1
+
+###
+PATCH http://localhost:3000/tuitions/1
+Content-Type: application/json
+
+{
+  "city": "Medellin",
+  "paymentAmount": 410.75
+}
+
+###
+DELETE http://localhost:3000/tuitions/1

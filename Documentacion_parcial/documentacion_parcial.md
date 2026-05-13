@@ -75,4 +75,38 @@ Como evidencia final de este paso, se muestra la compilacion del proyecto ejecut
 Con esto el backend queda preparado para conectarse al motor de base de datos deseado sin cambiar manualmente el codigo.
 
 
-4: Ya con la base ORM , podemos crear lo modelos con sus respectivos compos crud y http
+4: Ya con la base del ORM configurada, se continuo con la construccion de la logica principal del proyecto, creando los modelos, las validaciones, los controladores, las rutas, la generacion de datos de prueba y las pruebas HTTP necesarias para validar el CRUD completo.
+
+En este punto se definieron los modelos principales del sistema en ingles, manteniendo el nombre `Tuition` para respetar el diagrama original del parcial. Para este proyecto se trabajaron las entidades `Car` y `Tuition`, representando la relacion `1 a N` entre carros y matriculas asociadas.
+
+Dentro del modelo `Car` se definieron los campos principales del vehiculo, como la marca, la clase del vehiculo, el modelo, el cilindraje y la capacidad. De la misma forma, en el modelo `Tuition` se definieron los campos correspondientes a la fecha de matricula, la ciudad, el valor del pago y la relacion con el carro por medio de la llave foranea `car_id`.
+
+Tambien se configuraron los modulos de NestJS para cada recurso, permitiendo que cada parte del sistema quedara separada por responsabilidad. Esto ayuda a mantener una mejor organizacion del backend y facilita el crecimiento del proyecto en los siguientes pasos.
+
+Despues de definir los modelos, se construyeron los DTOs con validaciones. En esta parte se controlan los datos que entran por las solicitudes HTTP, asegurando que los campos obligatorios lleguen correctamente, que los textos respeten una longitud valida y que los valores numericos cumplan con el formato esperado.
+
+Con la base de los modelos y validaciones lista, se implementaron los servicios y controladores para cada recurso. En estos archivos se desarrolla la logica del CRUD, permitiendo crear, listar, consultar por id, actualizar y eliminar informacion tanto de `cars` como de `tuitions`.
+
+Adicionalmente, se agrego una ruta especial de siembra de datos usando `Faker`, con el objetivo de generar automaticamente `20 registros` en la tabla `cars` y `20 registros` en la tabla `tuitions`. Esto permite poblar rapidamente la base de datos para hacer pruebas funcionales del sistema.
+
+Tambien se creo un archivo de pruebas HTTP con ejemplos de solicitudes para cada endpoint del proyecto. De esta forma queda documentado como consumir las rutas del backend para probar la creacion, consulta, actualizacion y eliminacion de datos.
+
+Como resultado de este paso, el backend ya cuenta con:
+
+- modelos principales del sistema
+- relacion entre tablas
+- validacion de datos de entrada
+- controladores y rutas CRUD
+- servicios con logica de negocio
+- generacion de datos de prueba con Faker
+- archivo de pruebas HTTP
+
+Para documentar visualmente este paso, las imagenes que conviene agregar despues son las siguientes:
+
+- una captura del modelo `Car`, mostrando los campos y la relacion con `tuitions`
+- una captura del modelo `Tuition`, mostrando sus campos y la relacion con `Car`
+- una captura de los DTOs de `cars` o `tuitions`, para evidenciar las validaciones
+- una captura de un controlador, donde se vea claramente el CRUD
+- una captura del archivo de pruebas HTTP
+- una captura de la respuesta del endpoint `/seed`
+- una captura donde se vea que se generaron los `20 registros` por tabla
