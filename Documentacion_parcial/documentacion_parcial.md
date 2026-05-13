@@ -19,3 +19,5 @@ El proyecto incluira:
 - 20 registros por tabla con Faker
 - pruebas HTTP para el CRUD
 - verificacion en DBeaver
+
+Las imagenes de evidencias se guardaran en `Documentacion_parcial/imagenes`, separadas por subcarpetas segun el tema documentado, por ejemplo `docker`, `dbeaver` o `http`.
