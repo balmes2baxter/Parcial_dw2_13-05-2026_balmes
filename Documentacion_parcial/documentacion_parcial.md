@@ -40,3 +40,39 @@ Asi inicio el backend depues de la intlacion:
 
 El promt que ultilice para centar las bases de nest:
 ![Creacion base NestJS](./imagenes/nest/nest-backend-creacion.png)
+
+
+3: Despues de tener la base del backend creada, se configuro el ORM para que el proyecto pueda trabajar con `PostgreSQL` o `MySQL` segun la configuracion definida en el archivo `.env`.
+
+En este paso se instalaron las dependencias necesarias de `TypeORM`, `@nestjs/config`, `pg` y `mysql2`, las cuales permiten manejar el ORM, leer variables de entorno y conectarse a los dos motores de base de datos definidos para el proyecto.
+
+En la siguiente imagen se observan las dependencias agregadas en el archivo `package.json`, evidenciando que el backend ya fue preparado para trabajar con un ORM y con ambos drivers de conexion.
+![Dependencias ORM](./imagenes/orm/orm-dependencias-package-json.png)
+
+Tambien se creo una configuracion central para la base de datos, permitiendo cambiar valores como:
+
+- `DB_TYPE`
+- `DB_HOST`
+- `DB_PORT`
+- `DB_USERNAME`
+- `DB_PASSWORD`
+- `DB_NAME`
+- `DB_SYNCHRONIZE`
+
+En la siguiente evidencia se muestra el archivo `.env.example`, encargado de definir de forma configurable el tipo de base de datos, el host, el puerto, el usuario, la contrasena y el nombre de la base de datos que utilizara el backend.
+![Archivo env example](./imagenes/orm/orm-env-example.png)
+
+En la siguiente imagen se observa el archivo `src/config/database.config.ts`, encargado de centralizar la logica de conexion y de interpretar las variables del `.env` para decidir si el backend trabajara con `PostgreSQL` o con `MySQL`.
+![Database config](./imagenes/orm/orm-database-config.png)
+
+En esta evidencia se muestra el archivo `src/app.module.ts`, donde se integra `ConfigModule` para leer el archivo de entorno y `TypeOrmModule` para inicializar la conexion con la base de datos segun la configuracion definida.
+![App module ORM](./imagenes/orm/orm-app-module.png)
+
+Como evidencia final de este paso, se muestra la compilacion del proyecto ejecutando `npm run build`, validando que la configuracion del ORM y de las variables de entorno fue implementada correctamente y no presenta errores de construccion.
+![Build ORM](./imagenes/orm/orm-build-validation.png)
+
+
+Con esto el backend queda preparado para conectarse al motor de base de datos deseado sin cambiar manualmente el codigo.
+
+
+4: Ya con la base ORM , podemos crear lo modelos con sus respectivos compos crud y http
